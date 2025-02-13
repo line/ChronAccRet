@@ -200,6 +200,9 @@ class TextMotionDataset(Dataset):
         
         #prepare negative samples already
         shuffled = sorted(event, key=lambda k: random.random())
+        if len(shuffled) > 1:
+            while shuffled == event:
+                shuffled = sorted(event, key=lambda k: random.random())
         shuffled_event_text = ''
         for clause in shuffled:
             shuffled_event_text += clause + ' '
